@@ -80,7 +80,9 @@ ORDER BY
 ```
 The query filters the results to show only those records where the inventory difference is greater than zero, indicating a positive difference (more in stock than ordered). The results are then ordered in descending order based on the inventory difference.
 
-![top5_products_in_stock](https://github.com/phelpsbp/Projects/assets/150976820/da4f1f41-2d7c-4ac9-89f7-6ee0959b9f3f)
+![top5_products_in_stock](https://github.com/phelpsbp/Mint-Classics-Inventory-Optimization/assets/150976820/bfd5de57-7efd-4342-9df6-e08b530271ac)
+
+
 
 It looks like 2002 Suzuki XREO has the largest inventory difference, with 9997 currently in stock and only 1028 ordered overall. 
 In the top 5 individual products with the highest stock-to-order difference, 4 of the products are cars and 1 is an airplane. 
@@ -109,11 +111,14 @@ order by
 ```
 The order of these results is based on the order frequencies of the product line as whole, helping to identify which have a higher percentage of excess inventory or unmet demand. 
 
-<img src="https://github.com/phelpsbp/Projects/assets/150976820/ccf06c2a-677f-47ae-b216-3327a89008f0"/><img src="https://github.com/phelpsbp/Projects/assets/150976820/57e112e7-bcc3-4633-80da-11b53ec5783d"/>
+
+![Screenshot 2023-12-14 113748](https://github.com/phelpsbp/Mint-Classics-Inventory-Optimization/assets/150976820/7fcb0a35-91b2-46e0-bae9-3631d8c1e42b)
+
+
 
 It appears that while 4 of the 5 products with the highest amount of stock were classic cars, they are also the most ordered product line with significantly higher earnings than any other product line, indicating their inventory numbers are meeting demands. 
 Ships and trains have very low order rates, with trains making up only 2.67% of all orders. The low amount of orders coupled with a 0.62% stock-to-order rate suggests that, despite the relatively low demand indicated by the quantity of orders, there is a possibility of an overstock of trains. 
-
+<img src="https://github.com/phelpsbp/Mint-Classics-Inventory-Optimization/assets/150976820/69ce3af4-86ee-4cd0-bcbe-f96299bfb1a7" width="425"/><img src="https://github.com/phelpsbp/Mint-Classics-Inventory-Optimization/assets/150976820/9f159d52-baf7-4403-af3b-a5b7cae67925" width="425"/>
 ### Warehouses
 
 Let's take a look at data related to product inventory across different warehouses. I'll be looking at which warehouses have both the highest and lowest inventories.
@@ -135,7 +140,7 @@ ORDER BY
 ```
 The results show a list of products along with their corresponding warehouse names and the total quantity in stock for each product in each warehouse. The ordering is based on the ascending total inventory, meaning that the products with the lowest inventory across all warehouses appear first.
 
-| ![Screenshot 2023-12-14 121215](https://github.com/phelpsbp/Projects/assets/150976820/b3b64170-5087-4adb-af0d-e61778c73887)| 
+| ![Warehouse_PivotTable](https://github.com/phelpsbp/Mint-Classics-Inventory-Optimization/assets/150976820/b8896a34-990d-44b3-977a-747e574b6b1c)| 
 |:--:| 
 | Pivot Table from the results of the query examining individual product stocks in each warehouse. The Pivot Table shows stock totals by warehouse |
 
@@ -157,7 +162,9 @@ GROUP BY
 order by 
 	stockTotal desc;
 ```
-![Screenshot 2023-12-14 123455](https://github.com/phelpsbp/Projects/assets/150976820/50b88e20-ff34-4118-9f23-6be15589e932)![Screenshot 2023-12-14 123055](https://github.com/phelpsbp/Projects/assets/150976820/2adbe1b7-7a6a-40f6-beab-e67caee61bfb)
+
+![WarehouseStock_PieChart](https://github.com/phelpsbp/Mint-Classics-Inventory-Optimization/assets/150976820/5c9b4384-d7fe-4d3a-82c5-7519e9e79afe)![WarehouseStock_Barchart](https://github.com/phelpsbp/Mint-Classics-Inventory-Optimization/assets/150976820/54347c30-c0d0-4583-a8f9-b11fb4fa93de)
+
 
 The results show how the inventory is distributed across different warehouses.
 The query validated that the Southern warehouses have the lowest overall inventory and Eastern Warehouses have the highest. 
@@ -168,14 +175,14 @@ or
 
 #### Southern Warehouse
 To check for possible underlying reasons, I'm going to create a pivot table showing the specific items in stock in the Southern Warehouse. 
-![Screenshot 2023-12-14 165105](https://github.com/phelpsbp/Projects/assets/150976820/9432be96-6371-4311-b52c-d90f3ebf3406)
+![SouthernWarehouse_PivotTable](https://github.com/phelpsbp/Mint-Classics-Inventory-Optimization/assets/150976820/649b2946-bd8f-4bcd-8ab7-1ea41f78971d)
 
 Looks like the Southern Warehouse has inventory consisting primarily of the three product lines with the slowest turnover rates - Trucks and Buses, Ships, and Trains. 
 Let's take a peak at the inventory in the Eastern Warehouse.
 
 #### Eastern Warehouse
 
-![Screenshot 2023-12-14 170108](https://github.com/phelpsbp/Projects/assets/150976820/8d59e585-6f08-456c-b9ef-bde45f0e62dc)
+![EastWarehouse_PivotTable](https://github.com/phelpsbp/Mint-Classics-Inventory-Optimization/assets/150976820/8758b7f1-c313-4612-8f86-0761ef9f351b)
 
 The Eastern Warehouse holds cars, which we know from previous queries have high inventory due to high demand. 
 
@@ -196,7 +203,7 @@ LEFT Join
 order by
 	totalEarnings desc;
 ```
-|![Screenshot 2023-12-14 131242](https://github.com/phelpsbp/Projects/assets/150976820/e490bae5-6267-4621-9e84-0394e19f31ec)![Screenshot 2023-12-14 132411](https://github.com/phelpsbp/Projects/assets/150976820/a66f96a2-f057-4bda-a625-47c79f65f9cb)| 
+|![Customers_pivotTable](https://github.com/phelpsbp/Mint-Classics-Inventory-Optimization/assets/150976820/12b54ebf-4f4c-4b0b-802c-977ed198e89e)![CustomerEarnings_pivotTable](https://github.com/phelpsbp/Mint-Classics-Inventory-Optimization/assets/150976820/d922638b-39d5-43e5-bd58-d25bd3b139d9)| 
 |:--:| 
 | The results are ordered by total earnings in descending order, meaning the customers who have spent the most are listed at the top of the table. These pivot tables show that Euro+ Shopping Channel and Mini Gifts Distributors Ltd. make up a majority of the company's sales |
 
